@@ -7,6 +7,7 @@ const manifest = defineManifest({
   name: "Google Photos Uploader",
   version: "0.0.1",
   permissions: ["contextMenus", "identity"],
+  host_permissions: ["*://*/*"],
   background: {
     service_worker: "src/service-worker.ts",
     type: "module",
