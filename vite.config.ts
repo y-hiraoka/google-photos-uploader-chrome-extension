@@ -6,10 +6,15 @@ const manifest = defineManifest({
   manifest_version: 3,
   name: "Google Photos Uploader",
   version: "0.0.1",
-  permissions: ["contextMenus"],
+  permissions: ["contextMenus", "identity"],
   background: {
     service_worker: "src/service-worker.ts",
     type: "module",
+  },
+  oauth2: {
+    client_id:
+      "717846666524-gtt21rppl969kauvo6d0q645baikbqat.apps.googleusercontent.com",
+    scopes: ["https://www.googleapis.com/auth/photoslibrary.appendonly"],
   },
 });
 

@@ -1,6 +1,6 @@
 const CONTEXT_MENU_ID = "upload-to-google-photos";
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.create({
     id: CONTEXT_MENU_ID,
     title: "Googleフォトにアップロード",
@@ -13,3 +13,12 @@ chrome.contextMenus.onClicked.addListener((info) => {
     console.log("Upload to Google Photos", info);
   }
 });
+
+chrome.identity
+  .getAuthToken({ interactive: true })
+  .then((token) => {
+    console.log("OAuth Token: ", token);
+  })
+  .catch((error) => {
+    console.error("Failed to get auth token: ", error);
+  });
